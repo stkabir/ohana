@@ -18,7 +18,9 @@
         <header>
             <nav class="navbar navbar-expand-lg fixed-top">
                 <div class="container-xxl">
-                    <a class="navbar-brand" href="#">icono</a>
+                    <a class="navbar-brand" href="#">
+						<img src="{{ asset('logo.png') }}" height="75px"/>
+					</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -27,10 +29,10 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-end">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
+                                <a class="nav-link" href="#">Contacto</a>
                             </li>
                         </ul>
                     </div>
@@ -71,67 +73,7 @@
 					<div class="card-body">
 						<div class="tab-content" id="contenidoBuscadorPrincipal">
 							<div class="tab-pane fade show active" id="form1ContenidoBuscadorPrincipal" role="tabpanel" aria-labelledby="form1Option" tabindex="0">
-								<form class="container">
-									<div class="row py-2">
-										<div class="col-auto">
-											<div class="form-check">
-												<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-												<label class="form-check-label" for="flexRadioDefault1">
-												  Ida y vuelta
-												</label>
-											</div>
-										</div>
-										<div class="col-auto">
-											<div class="form-check">
-												<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-												<label class="form-check-label" for="flexRadioDefault2">
-												  Solo ida
-												</label>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-12 col-sm-4 py-2">
-											<select class="form-select" aria-label="Default select example">
-												<option selected>- Tipo de servicio -</option>
-												<option value="1">Aeropuerto a hotel</option>
-												<option value="2">Hotel a aeropuerto</option>
-												<option value="3">Hotel a hotel</option>
-											</select>
-										</div>
-										<div class="col-6 col-sm-4 py-2">
-											<select class="form-select" aria-label="Default select example">
-												<option selected>- Origen -</option>
-											</select>
-										</div>
-										<div class="col-6 col-sm-4 py-2">
-											<select class="form-select" aria-label="Default select example">
-												<option selected>- Destino -</option>
-											</select>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-6 col-sm-3 py-2">
-											<input class="form-control" type="text" placeholder="Fecha ida" aria-label="default input example">
-										</div>
-										<div class="col-6 col-sm-3 py-2">
-											<input class="form-control" type="text" placeholder="Fecha vuelta" aria-label="default input example">
-										</div>
-										<div class="col-6 col-sm-3 py-2">
-											<select class="form-select" aria-label="Default select example">
-												<option selected>-Adultos -</option>
-											</select>
-										</div>
-										<div class="col-6 col-sm-3 py-2">
-											<select class="form-select" aria-label="Default select example">
-												<option selected>- Menores -</option>
-											</select>
-										</div>
-									</div>
-									<div class="pt-3 text-center">
-										<buton class="btn btn-primary">Buscar</buton>
-									</div>
-								</form>
+								@livewire(Publico\Buscador::class)
 							</div>
 						</div>
 					</div>
@@ -140,16 +82,31 @@
         </header>
         <main class="pb-4">
 			<div class="container-xxl pt-4">
-				<h1>Tours</h1>
+				<h1>Unidades</h1>
 			</div>
 			<div class="container-fluid">
-				cards de 4 o 6 productos destacados
-			</div>
-			<div class="container-xxl pt-4">
-				<h1>Hoteles</h1>
-			</div>
-			<div class="container-fluid">
-				cards de 4 o 6 productos destacados
+				<div class="row">
+					<div class="col-xxl-2 col-xl-3 col-lg-4 col-sm-6 py-3">
+						<div class="card">
+							<img src="{{ asset('temporal/van.jpg') }}" class="card-img-top" alt="...">
+							<div class="card-body">
+							  <h5 class="card-title">Toyota Hiace</h5>
+							  <p class="card-text">...</p>
+							  <p>8 pax</p>
+							</div>
+						  </div>
+					</div>
+					<div class="col-xxl-2 col-xl-3 col-lg-4 col-sm-6 py-3">
+						<div class="card">
+							<img src="{{ asset('temporal/van.jpg') }}" class="card-img-top" alt="...">
+							<div class="card-body">
+							  <h5 class="card-title">Nissan Urvan</h5>
+							  <p class="card-text">...</p>
+							  <p>10 pax</p>
+							</div>
+						  </div>
+					</div>
+				</div>
 			</div>
         </main>
         <footer class="text-bg-secondary mt-auto"> 

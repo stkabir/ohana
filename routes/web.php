@@ -20,6 +20,8 @@ Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(func
     Route::view('/zonas', 'dashboard.index', ['component' => 'dashboard.zona'])->name('zona');
     Route::view('/hoteles', 'dashboard.index', ['component' => 'dashboard.lugar'])->name('lugar');
     Route::view('/servicios', 'dashboard.index', ['component' => 'dashboard.servicio'])->name('servicio');
+    Route::view('/unidades', 'dashboard.index', ['component' => 'dashboard.unidad'])->name('unidad');
+    Route::view('/tarifas', 'dashboard.index', ['component' => 'dashboard.tarifa'])->name('tarifa');
 });
 
 Route::view('/login', 'site.index', ['component' => 'site.login'])->name('login');

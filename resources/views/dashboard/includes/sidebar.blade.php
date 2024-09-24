@@ -29,6 +29,18 @@
                 Servicios
             </a>
         </li>
+        <li class="sidebar-item">
+            <a wire:navigate href="{{ route('dashboard.unidad') }}" class="sidebar-link {{ Route::is('dashboard.unidad') ? 'active' : '' }}">
+                <i class="bi bi-truck"></i>
+                Unidades
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a wire:navigate href="{{ route('dashboard.tarifa') }}" class="sidebar-link {{ Route::is('dashboard.tarifa') ? 'active' : '' }}">
+                <i class="bi bi-coin"></i>
+                Tarifas
+            </a>
+        </li>
         {{--<li class="sidebar-item">
             <a wire:navigate href="{{ route('dashboard.branches') }}" class="sidebar-link {{ Route::is('dashboard.branches') ? 'active' : '' }}">
                 <i class="bi bi-buildings"></i>

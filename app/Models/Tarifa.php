@@ -25,6 +25,7 @@ class Tarifa extends Model
         'servicio_id',
         'origen_id',
         'destino_id',
+        'unidad_id',
         'pax1',
         'pax2',
         'precio',
@@ -52,5 +53,39 @@ class Tarifa extends Model
     public function destino()
     {
         return $this->belongsTo(Lugar::class, 'destino_id');
+    }
+
+    /**
+     * Get the unidad that owns the tarifa.
+     */
+    public function unidad() {
+        return $this->belongsTo(Unidad::class, 'unidad_id');
+    }
+
+    /**
+     * Scope a query to search by name and related models.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $search
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSearch($query, $search) {
+        if (empty($search)) {
+            return $query;
+        }
+
+        return $query->where('pax1', 'like', '%'.$search.'%')
+        ->orWhereHas('servicio', function ($q) use ($search) {
+            $q->where('nombre', 'like', '%'.$search.'%');
+        })
+        ->orWhereHas('origen', function ($q) use ($search) {
+            $q->where('nombre', 'like', '%'.$search.'%');
+        })
+        ->orWhereHas('destino', function ($q) use ($search) {
+            $q->where('nombre', 'like', '%'.$search.'%');
+        })
+        ->orWhereHas('unidad', function ($q) use ($search) {
+            $q->where('nombre', 'like', '%'.$search.'%');
+        });
     }
 }

@@ -12,9 +12,21 @@
             </a>
         </li>
         <li class="sidebar-item">
+            <a wire:navigate href="{{ route('dashboard.zona') }}" class="sidebar-link {{ Route::is('dashboard.zona') ? 'active' : '' }}">
+                <i class="bi bi-pin-map"></i>
+                Zonas
+            </a>
+        </li>
+        <li class="sidebar-item">
             <a wire:navigate href="{{ route('dashboard.lugar') }}" class="sidebar-link {{ Route::is('dashboard.lugar') ? 'active' : '' }}">
-                <i class="bi bi-building"></i>
+                <i class="bi bi-buildings"></i>
                 Hoteles
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a wire:navigate href="{{ route('dashboard.servicio') }}" class="sidebar-link {{ Route::is('dashboard.servicio') ? 'active' : '' }}">
+                <i class="bi bi-card-list"></i>
+                Servicios
             </a>
         </li>
         {{--<li class="sidebar-item">

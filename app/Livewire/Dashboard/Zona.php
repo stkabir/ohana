@@ -2,18 +2,17 @@
 
 namespace App\Livewire\Dashboard;
 
-use App\Models\Lugar as LugarModel;
-use App\Livewire\Forms\LugarForm;
+use App\Models\Zona as ZonaModel;
+use App\Livewire\Forms\ZonaForm;
 use Livewire\Attributes\Url;
 use Livewire\WithPagination;
 use Livewire\Component;
-use App\Models\Zona;
 use Auth;
 
-class Lugar extends Component {
+class Zona extends Component {
     use WithPagination;
 
-    public LugarForm $form;
+    public ZonaForm $form;
 
     protected $paginationTheme = 'bootstrap';
 
@@ -35,21 +34,19 @@ class Lugar extends Component {
     public $updateMode = false;
 
     public function render() {
-        $data = LugarModel::search($this->search)->orderBy($this->sortBy, $this->sortDir)->paginate($this->perPage);
-        $zonas = Zona::all();
+        $data = ZonaModel::search($this->search)->orderBy($this->sortBy, $this->sortDir)->paginate($this->perPage);
         $columns = [
             [
                 'name' => 'nombre',
                 'label' => 'Nombre',
             ],
-            [
-                'name' => 'zona_id',
-                'label' => 'Zona',
-            ],
+            // [
+            //     'name' => 'zona_id',
+            //     'label' => 'Zona',
+            // ],
         ];
-        return view('livewire.dashboard.lugares.index', [
+        return view('livewire.dashboard.zonas.index', [
             'data' => $data,
-            'zonas' => $zonas,
             'columns' => $columns,
         ]);
     }
@@ -61,7 +58,7 @@ class Lugar extends Component {
 
     public function edit($id) {
         $this->updateMode = true;
-        $this->form->setLugar($id);
+        $this->form->setZona($id);
     }
 
     public function setSortBy($sortByField) {

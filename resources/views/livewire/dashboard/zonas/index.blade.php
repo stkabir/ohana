@@ -1,8 +1,8 @@
 <div>
-    @include('livewire.dashboard.lugares.form')
+    @include('livewire.dashboard.zonas.form')
     <div class="card mt-4">
         <div class="card-header">
-            <h2 class="text-center">Hoteles</h2>
+            <h2 class="text-center">Zonas</h2>
         </div>
         <div class="card-body">
             <div class="d-flex justify-content-between mb-1">
@@ -35,7 +35,6 @@
                     @foreach($data as $item)
                         <tr>
                             <td>{{ $item->nombre }}</td>
-                            <td>{{ $item->zona->nombre }}</td>
                                 <td>
                                     <button wire:click="edit({{ $item->id }})" class="btn btn-primary btn-sm">Editar</button>
                                     {{-- <button wire:click="delete({{ $item->id }})" class="btn btn-danger btn-sm">Eliminar</button> --}}

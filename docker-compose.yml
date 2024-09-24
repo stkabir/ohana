@@ -1,0 +1,68 @@
+services:
+  php:
+    build:
+      args:
+        user: data
+        uid: 4000
+      context: .
+      dockerfile: dockerConfig/php
+    container_name: php
+    networks:
+      - dev
+    restart: unless-stopped
+    working_dir: /var/www/
+    extra_hosts:
+        - "host.docker.internal:host-gateway"
+    volumes:
+      - ./:/var/www/
+      - ./dockerConfig/logs/php/:/var/log/
+      - ./dockerConfig/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./dockerConfig/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+    environment:
+      XDEBUG_MODE: debug
+      XDEBUG_CONFIG: client_host=host.docker.internal client_port=9003
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ohanaMysql
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_PASSWORD: 123456
+      MYSQL_USER: laravel
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - mysql-volume:/var/lib/mysql
+    networks:
+      - dev
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin
+    restart: unless-stopped
+    ports:
+      - 8000:80
+      - 4430:443
+    environment:
+      - PMA_ARBITRARY=0
+      - PMA_HOST=mysql
+    networks:
+      - dev
+  nginx:
+    build:
+      context: .
+      dockerfile: dockerConfig/nginx
+    container_name: nginx
+    restart: unless-stopped
+    ports: 
+      - "80:80"
+    networks:
+      - dev
+    volumes:
+      - ./public/:/var/www/public/
+      - ./dockerConfig/logs/nginx/:/var/log/nginx/
+networks:
+  dev:
+    driver: bridge
+volumes:
+  mysql-volume:

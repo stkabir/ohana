@@ -27,4 +27,15 @@ class Unidad extends Model
         'tipo',
         'imagen',
     ];
+
+    /**
+     * Scope a query to search by name.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $search
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSearch($query, $search) {
+        return empty($search) ? $query : $query->where('nombre', 'like', '%'.$search.'%');
+    }
 }

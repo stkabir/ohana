@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('tarifas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('servicio_id')->constrained();
+            $table->foreignId('servicio_id')->constrained('servicios');
             $table->foreignId('origen_id')->constrained('lugares');
             $table->foreignId('destino_id')->constrained('lugares');
+            $table->foreignId('unidad_id')->constrained('unidades');
             $table->string('pax1', 3);
             $table->string('pax2', 3);
             $table->decimal('precio', 10, 2);
@@ -32,6 +33,7 @@ return new class extends Migration
             $table->dropForeign(['servicio_id']);
             $table->dropForeign(['origen_id']);
             $table->dropForeign(['destino_id']);
+            $table->dropForeign(['unidad_id']);
         });
         Schema::dropIfExists('tarifas');
     }

@@ -11,6 +11,12 @@
                 Inicio
             </a>
         </li>
+        <li class="sidebar-item">
+            <a wire:navigate href="{{ route('dashboard.lugar') }}" class="sidebar-link {{ Route::is('dashboard.lugar') ? 'active' : '' }}">
+                <i class="bi bi-building"></i>
+                Hoteles
+            </a>
+        </li>
         {{--<li class="sidebar-item">
             <a wire:navigate href="{{ route('dashboard.branches') }}" class="sidebar-link {{ Route::is('dashboard.branches') ? 'active' : '' }}">
                 <i class="bi bi-buildings"></i>

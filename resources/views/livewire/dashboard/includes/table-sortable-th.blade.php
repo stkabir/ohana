@@ -1,6 +1,6 @@
 <th wire:click="setSortBy('{{ $name }}')">
     <button class="btn btn-sm fw-bold">
-        {{ $display_name }}
+        {{ $label }}
         @if ($sortBy !== $name)
             <i class="bi bi-arrow-down-up"></i>
         @elseif($sortDir === 'ASC')

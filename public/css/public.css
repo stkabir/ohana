@@ -5,3 +5,38 @@
 footer h2 {
     font-size: 1em;
 }
+.autocomplete {
+    position: relative;
+}
+
+.autocomplete input#autocomplete_destino {
+    position: relative;
+    z-index: 100;
+}
+
+.autocomplete .autocomplete-list {
+    width: 100%;
+    background: white;
+    position: absolute;
+    font-size: 12px;
+    padding-top: 10px;
+    margin-top: -10px;
+    z-index: 50;
+    overflow: hidden;
+    overflow-y: scroll;
+    max-height: calc(2.5em * 5);
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    outline: 0;
+}
+
+.autocomplete .autocomplete-list .autocomplete-item-list {
+    line-height: 2em;
+    box-sizing: content-box;
+    padding-left: 1em;
+    cursor: pointer;
+    padding-right: 1em;
+    margin-top: .5em;
+}
+.autocomplete .autocomplete-list .autocomplete-item-list:hover {
+    background: var(--bs-gray-200);
+}

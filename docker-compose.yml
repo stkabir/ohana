@@ -11,16 +11,16 @@ services:
       - dev
     restart: unless-stopped
     working_dir: /var/www/
-    extra_hosts:
-        - "host.docker.internal:host-gateway"
+    #extra_hosts:
+    #    - "host.docker.internal:host-gateway"
     volumes:
       - ./:/var/www/
-      - ./dockerConfig/logs/php/:/var/log/
-      - ./dockerConfig/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-      - ./dockerConfig/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
-    environment:
-      XDEBUG_MODE: debug
-      XDEBUG_CONFIG: client_host=host.docker.internal client_port=9003
+      #- ./dockerConfig/logs/php/:/var/log/
+      #- ./dockerConfig/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      #- ./dockerConfig/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+    #environment:
+    #  XDEBUG_MODE: debug
+    #  XDEBUG_CONFIG: client_host=host.docker.internal client_port=9003
   db:
     image: mysql:8.0
     container_name: mysql
@@ -60,7 +60,7 @@ services:
       - dev
     volumes:
       - ./public/:/var/www/public/
-      - ./dockerConfig/logs/nginx/:/var/log/nginx/
+      #- ./dockerConfig/logs/nginx/:/var/log/nginx/
 networks:
   dev:
     driver: bridge

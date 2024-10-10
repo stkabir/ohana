@@ -2,15 +2,11 @@
 
 namespace App\Livewire\Publico\Componentes;
 
-use Livewire\Component;
+use App\Livewire\Publico\Componentes\FormControlHijo;
 use App\Models\Zona;
 
-class SelectAeropuerto extends Component
+class SelectAeropuerto extends FormControlHijo
 {
-    public int $value;
-
-    public string $tipo; // origen || destino
-
     public function render()
     {
         $zonas = Zona::where("nombre", "like", "%APTO%")->get();

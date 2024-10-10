@@ -9,7 +9,7 @@ footer h2 {
     position: relative;
 }
 
-.autocomplete input#autocomplete_destino {
+.autocomplete .form-control {
     position: relative;
     z-index: 100;
 }

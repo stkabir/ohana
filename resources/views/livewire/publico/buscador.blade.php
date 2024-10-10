@@ -31,19 +31,22 @@
                 @case(1)
                     @livewire(Publico\Componentes\SelectAeropuerto::class, [
                         "value" =>  "0",
-                        "tipo"  =>  "origen"
+                        "nombre"  =>  "origen",
+                        "form" => $form
                     ])
                     @break
                 @case(2)
                     @livewire(Publico\Componentes\AutocompleteHotel::class, [
                         "value" =>  "",
-                        "tipo"  =>  "origen"
+                        "nombre"  =>  "origen",
+                        "form" => $form
                     ])
                     @break
                 @case(3)
                     @livewire(Publico\Componentes\AutoCompleteHotel::class, [
                         "value" =>  "",
-                        "tipo"  =>  "origen"
+                        "nombre"  =>  "origen",
+                        "form" => $form
                     ])
                     @break
                 @default       
@@ -54,19 +57,22 @@
                 @case(1)
                     @livewire(Publico\Componentes\AutoCompleteHotel::class, [
                         "value" =>  "",
-                        "tipo"  =>  "destino"
+                        "nombre"  =>  "destino",
+                        "form" => $form
                     ])
                     @break
                 @case(2)
                     @livewire(Publico\Componentes\SelectAeropuerto::class, [
                         "value" =>  "0",
-                        "tipo"  =>  "destino"
+                        "nombre"  =>  "destino",
+                        "form" => $form
                     ])
                     @break
                 @case(3)
                     @livewire(Publico\Componentes\AutoCompleteHotel::class, [
                         "value" =>  "",
-                        "tipo"  =>  "destino"
+                        "nombre"  =>  "destino",
+                        "form" => $form
                     ])
                     @break
                 @default       
@@ -75,15 +81,15 @@
     </div>
     <div class="row">
         <div class="col-6 col-sm-3 py-2">
-            <input class="form-control" type="date" placeholder="Fecha ida" aria-label="default input example">
+            <input class="form-control" type="date" placeholder="Fecha ida" aria-label="Fecha de ida">
         </div>
         @if($idaVuelta)
         <div class="col-6 col-sm-3 py-2">
-            <input class="form-control" type="date" placeholder="Fecha vuelta" aria-label="default input example">
+            <input class="form-control" type="date" placeholder="Fecha vuelta" aria-label="Fecha de vuelta">
         </div>
         @endIf
         <div class="col-6 col-sm-3 py-2">
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Adultos">
                 <option selected value="0">-Adultos -</option>
                 @for($i=1; $i<=50; $i++) 
                     <option value="{{$i}}" wire:key="{{$i}}">{{$i}}</option>
@@ -91,7 +97,7 @@
             </select>
         </div>
         <div class="col-6 col-sm-3 py-2">
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Menores">
                 <option selected>- Menores -</option>
                 @for($i=1; $i<=50; $i++) 
                     <option value="{{$i}}" wire:key="{{$i}}">{{$i}}</option>

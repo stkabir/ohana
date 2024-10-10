@@ -2,16 +2,12 @@
 
 namespace App\Livewire\Publico\Componentes;
 
-use Livewire\Component;
+use App\Livewire\Publico\Componentes\FormControlHijo;
 use App\Models\Lugar;
 
-class AutoCompleteHotel extends Component
+class AutoCompleteHotel extends FormControlHijo
 {
-    public string $value;
-
-    public string $idValue;
-
-    public string $tipo; // origen || destino
+    public $value;
 
     public $lugares = [];
     
@@ -44,7 +40,8 @@ class AutoCompleteHotel extends Component
     public function seleccionar(string $id, string $nombre) 
     {
         $this->value=$nombre;
-        $this->idValue=$id;
+        $modelName = strtolower($this->nombre);
+        $this->form->{$modelName}=$id;
         $this->mostrarLugares = false;
     }
 }

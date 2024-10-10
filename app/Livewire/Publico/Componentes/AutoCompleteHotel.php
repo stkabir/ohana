@@ -43,5 +43,6 @@ class AutoCompleteHotel extends FormControlHijo
         $modelName = strtolower($this->nombre);
         $this->form->{$modelName}=$id;
         $this->mostrarLugares = false;
+        $this->actualizaValor();
     }
 }

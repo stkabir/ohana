@@ -3,20 +3,21 @@
 namespace App\Livewire\Publico\Componentes;
 
 use Livewire\Component;
+use App\Livewire\Forms\Publico\Forms\TrasporteForm;
 
 class FormControlHijo extends Component
 {
-    public $form;
+    public string $nombre;
+    public TrasporteForm $form;
 
-    public function mount($form)
+    public function mount(TrasporteForm $form)
     {
         $this->form = $form;
     }
 
-    public function updatedForm()
+    public function actualizaValor()
     {
-        $this->emitUp('updateFormFromChild', (array)$this->form);
+        $this->dispatch('actualizaValor', campo: $this->nombre, valor: $this->form->{$this->nombre});
     }
 
-    public string $nombre;
 }

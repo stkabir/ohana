@@ -1,4 +1,4 @@
-<form class="container">
+<form class="container" wire:submit="buscarTrasporte">
     <div class="row py-2">
         <div class="col-auto">
             <div class="form-check">
@@ -19,21 +19,23 @@
     </div>
     <div class="row">
         <div class="col-12 col-sm-4 py-2">
-            <select class="form-select" aria-label="Tipo de servicio" wire:model.live="tipoServicios">
+            <select class="form-select" aria-label="Tipo de servicio" wire:model.live="form.tipoServicios">
                 <option value="0">- Tipo de servicio -</option>
                 <option value="1">Aeropuerto a hotel</option>
                 <option value="2">Hotel a aeropuerto</option>
                 <option value="3">Hotel a hotel</option>
             </select>
+            @error('form.tipoServicios') <span class="error">{{ $message }}</span> @enderror
         </div>
         <div class="col-6 col-sm-4 py-2">
-            @switch($tipoServicios)
+            @switch($form->tipoServicios)
                 @case(1)
                     @livewire(Publico\Componentes\SelectAeropuerto::class, [
                         "value" =>  "0",
                         "nombre"  =>  "origen",
                         "form" => $form
                     ])
+                    @error('form.origen') <span class="error">{{ $message }}</span> @enderror
                     @break
                 @case(2)
                     @livewire(Publico\Componentes\AutocompleteHotel::class, [
@@ -41,6 +43,7 @@
                         "nombre"  =>  "origen",
                         "form" => $form
                     ])
+                    @error('form.origen') <span class="error">{{ $message }}</span> @enderror
                     @break
                 @case(3)
                     @livewire(Publico\Componentes\AutoCompleteHotel::class, [
@@ -48,18 +51,20 @@
                         "nombre"  =>  "origen",
                         "form" => $form
                     ])
+                    @error('form.origen') <span class="error">{{ $message }}</span> @enderror
                     @break
                 @default       
             @endswitch
         </div>
         <div class="col-6 col-sm-4 py-2">
-            @switch($tipoServicios)
+            @switch($form->tipoServicios)
                 @case(1)
                     @livewire(Publico\Componentes\AutoCompleteHotel::class, [
                         "value" =>  "",
                         "nombre"  =>  "destino",
                         "form" => $form
                     ])
+                    @error('form.destino') <span class="error">{{ $message }}</span> @enderror
                     @break
                 @case(2)
                     @livewire(Publico\Componentes\SelectAeropuerto::class, [
@@ -67,6 +72,7 @@
                         "nombre"  =>  "destino",
                         "form" => $form
                     ])
+                    @error('form.destino') <span class="error">{{ $message }}</span> @enderror
                     @break
                 @case(3)
                     @livewire(Publico\Componentes\AutoCompleteHotel::class, [
@@ -74,6 +80,7 @@
                         "nombre"  =>  "destino",
                         "form" => $form
                     ])
+                    @error('form.destino') <span class="error">{{ $message }}</span> @enderror
                     @break
                 @default       
             @endswitch
@@ -81,31 +88,35 @@
     </div>
     <div class="row">
         <div class="col-6 col-sm-3 py-2">
-            <input class="form-control" type="date" placeholder="Fecha ida" aria-label="Fecha de ida">
+            <input class="form-control" type="date" placeholder="Fecha ida" aria-label="Fecha de ida" wire:model="form.fechaIda">
+            @error('form.fechaIda') <span class="error">{{ $message }}</span> @enderror
         </div>
         @if($idaVuelta)
         <div class="col-6 col-sm-3 py-2">
-            <input class="form-control" type="date" placeholder="Fecha vuelta" aria-label="Fecha de vuelta">
+            <input class="form-control" type="date" placeholder="Fecha vuelta" aria-label="Fecha de vuelta" wire:model="form.fechaVuelta">
+            @error('form.fechaVuelta') <span class="error">{{ $message }}</span> @enderror
         </div>
         @endIf
         <div class="col-6 col-sm-3 py-2">
-            <select class="form-select" aria-label="Adultos">
+            <select class="form-select" aria-label="Adultos" wire:model="form.adultos">
                 <option selected value="0">-Adultos -</option>
                 @for($i=1; $i<=50; $i++) 
                     <option value="{{$i}}" wire:key="{{$i}}">{{$i}}</option>
                 @endFor
             </select>
+            @error('form.adultos') <span class="error">{{ $message }}</span> @enderror
         </div>
         <div class="col-6 col-sm-3 py-2">
-            <select class="form-select" aria-label="Menores">
+            <select class="form-select" aria-label="Menores" wire:model="form.ninos">
                 <option selected>- Menores -</option>
                 @for($i=1; $i<=50; $i++) 
                     <option value="{{$i}}" wire:key="{{$i}}">{{$i}}</option>
                 @endFor
             </select>
+            @error('form.ninos') <span class="error">{{ $message }}</span> @enderror
         </div>
     </div>
     <div class="pt-3 text-center">
-        <buton class="btn btn-primary">Buscar</buton>
+        <button class="btn btn-primary" type="submit">Buscar</button>
     </div>
 </form>

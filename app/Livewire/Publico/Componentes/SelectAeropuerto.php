@@ -12,4 +12,8 @@ class SelectAeropuerto extends FormControlHijo
         $zonas = Zona::where("nombre", "like", "%APTO%")->get();
         return view('livewire.publico.componentes.select-aeropuerto', ["zonas" => $zonas]);
     }
+
+    public function updated() {
+        $this->actualizaValor();
+    }
 }

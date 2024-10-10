@@ -2,36 +2,20 @@
 
 namespace App\Livewire\Publico;
 
+use App\Livewire\Forms\Publico\Forms\TrasporteForm;
 use Livewire\Component;
-use Livewire\Attributes\Validate; 
+use Livewire\Attributes\On; 
 
 class Buscador extends Component
 {
-    public $form;
+    public TrasporteForm $form;
+
     public bool $idaVuelta = true;
-    public int $tipoServicios = 1;
 
-    public function mount()
+    #[On('actualizaValor')]
+    public function actualizaValor(string $campo, string $valor)
     {
-        $this->form = (object)[
-            'idaVuelta' => '',
-            'tipoServicio' => '',
-            'origen' => '',
-            'destino' => '',
-            'fechaIda' => '',
-            'fechaVuelta' => '',
-            'adultos' => '',
-            'ninos' => '',
-        ];
-    }
-
-    protected $listeners = ['updateFormFromChild'];
-
-    public function updateFormFromChild($data)
-    {
-        foreach ($data as $key => $value) {
-            $this->form->$key = $value;
-        }
+        $this->form->{$campo} = $valor;
     }
 
     public function render()
@@ -39,8 +23,14 @@ class Buscador extends Component
         return view('livewire.publico.buscador');
     }
 
+    public function updated() {
+        $this->form->origen = "";
+        $this->form->destino = "";
+        $this->form->limpiaValidacion();
+    }
+
     public function buscarTrasporte()
     {
-        $this->validate();
+        $this->form->store(); 
     }
 }

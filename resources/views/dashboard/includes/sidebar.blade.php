@@ -41,18 +41,6 @@
                 Tarifas
             </a>
         </li>
-        {{--<li class="sidebar-item">
-            <a wire:navigate href="{{ route('dashboard.branches') }}" class="sidebar-link {{ Route::is('dashboard.branches') ? 'active' : '' }}">
-                <i class="bi bi-buildings"></i>
-                Sucursales
-            </a>
-        </li>
-        <li class="sidebar-item">
-            <a wire:navigate href="{{ route('dashboard.products') }}" class="sidebar-link {{ Route::is('dashboard.products') ? 'active' : '' }}">
-                <i class="bi bi-tags"></i>
-                Productos
-            </a>
-        </li>--}}
         <!-- <li class="sidebar-item">
             <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
                 data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
@@ -94,7 +82,7 @@
     </ul>
     <div class="sidebar-footer">
         <a href="#" class="sidebar-link">
-            <i class="bi bi-exit"></i>
+            <i class="bi bi-box-arrow-left"></i>
             Logout
         </a>
     </div>

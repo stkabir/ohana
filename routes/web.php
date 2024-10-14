@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'site.index', ['component' => 'site.login']);
+Route::view('/', 'publico.home');
 
 Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function () {
     Route::view('/inicio', 'dashboard.index', ['component' => 'dashboard.home'])->name('home');

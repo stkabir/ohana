@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Zona extends Model
 {
+    // TODO falta agregar un tipo de zona ya que deberiamos poder agregar zonas tipo hotel, aeropuerto, y otros
     use HasFactory;
 
     /**

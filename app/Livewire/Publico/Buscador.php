@@ -6,18 +6,11 @@ use Livewire\Component;
 
 class Buscador extends Component
 {
-    public $mostrarFechaRegreso = false;
+    public bool $idaVuelta = true;
+    public int $tipoServicios = 1;
 
     public function render()
     {
         return view('livewire.publico.buscador');
-    }
-
-    public function seleccionaTipoTour($soloIda) {
-        if ($soloIda) {
-            $this->mostrarFechaRegreso = true;
-        } else {
-            $this->mostrarFechaRegreso = false;
-        }
     }
 }

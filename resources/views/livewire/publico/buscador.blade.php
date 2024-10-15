@@ -25,7 +25,7 @@
                 <option value="2">Hotel a aeropuerto</option>
                 <option value="3">Hotel a hotel</option>
             </select>
-            @error('form.tipoServicios') <span class="error">{{ $message }}</span> @enderror
+            @error('form.tipoServicios') <small class="text-danger">{{ $message }}</small> @enderror
         </div>
         <div class="col-6 col-sm-4 py-2">
             @switch($form->tipoServicios)
@@ -35,7 +35,7 @@
                         "nombre"  =>  "origen",
                         "form" => $form
                     ])
-                    @error('form.origen') <span class="error">{{ $message }}</span> @enderror
+                    @error('form.origen') <small class="text-danger">{{ $message }}</small> @enderror
                     @break
                 @case(2)
                     @livewire(Publico\Componentes\AutocompleteHotel::class, [
@@ -43,7 +43,7 @@
                         "nombre"  =>  "origen",
                         "form" => $form
                     ])
-                    @error('form.origen') <span class="error">{{ $message }}</span> @enderror
+                    @error('form.origen') <small class="text-danger">{{ $message }}</small> @enderror
                     @break
                 @case(3)
                     @livewire(Publico\Componentes\AutoCompleteHotel::class, [
@@ -51,7 +51,7 @@
                         "nombre"  =>  "origen",
                         "form" => $form
                     ])
-                    @error('form.origen') <span class="error">{{ $message }}</span> @enderror
+                    @error('form.origen') <small class="text-danger">{{ $message }}</small> @enderror
                     @break
                 @default       
             @endswitch
@@ -64,7 +64,7 @@
                         "nombre"  =>  "destino",
                         "form" => $form
                     ])
-                    @error('form.destino') <span class="error">{{ $message }}</span> @enderror
+                    @error('form.destino') <small class="text-danger">{{ $message }}</small> @enderror
                     @break
                 @case(2)
                     @livewire(Publico\Componentes\SelectAeropuerto::class, [
@@ -72,7 +72,7 @@
                         "nombre"  =>  "destino",
                         "form" => $form
                     ])
-                    @error('form.destino') <span class="error">{{ $message }}</span> @enderror
+                    @error('form.destino') <small class="text-danger">{{ $message }}</small> @enderror
                     @break
                 @case(3)
                     @livewire(Publico\Componentes\AutoCompleteHotel::class, [
@@ -80,7 +80,7 @@
                         "nombre"  =>  "destino",
                         "form" => $form
                     ])
-                    @error('form.destino') <span class="error">{{ $message }}</span> @enderror
+                    @error('form.destino') <small class="text-danger">{{ $message }}</small> @enderror
                     @break
                 @default       
             @endswitch
@@ -89,12 +89,12 @@
     <div class="row">
         <div class="col-6 col-sm-3 py-2">
             <input class="form-control" type="date" placeholder="Fecha ida" aria-label="Fecha de ida" wire:model="form.fechaIda">
-            @error('form.fechaIda') <span class="error">{{ $message }}</span> @enderror
+            @error('form.fechaIda') <snall class="text-danger">{{ $message }}</snall> @enderror
         </div>
         @if($idaVuelta)
         <div class="col-6 col-sm-3 py-2">
             <input class="form-control" type="date" placeholder="Fecha vuelta" aria-label="Fecha de vuelta" wire:model="form.fechaVuelta">
-            @error('form.fechaVuelta') <span class="error">{{ $message }}</span> @enderror
+            @error('form.fechaVuelta') <small class="text-danger">{{ $message }}</small> @enderror
         </div>
         @endIf
         <div class="col-6 col-sm-3 py-2">
@@ -104,7 +104,7 @@
                     <option value="{{$i}}" wire:key="{{$i}}">{{$i}}</option>
                 @endFor
             </select>
-            @error('form.adultos') <span class="error">{{ $message }}</span> @enderror
+            @error('form.adultos') <small class="text-danger">{{ $message }}</small> @enderror
         </div>
         <div class="col-6 col-sm-3 py-2">
             <select class="form-select" aria-label="Menores" wire:model="form.ninos">
@@ -113,10 +113,19 @@
                     <option value="{{$i}}" wire:key="{{$i}}">{{$i}}</option>
                 @endFor
             </select>
-            @error('form.ninos') <span class="error">{{ $message }}</span> @enderror
+            @error('form.ninos') <small class="text-danger">{{ $message }}</small> @enderror
         </div>
     </div>
     <div class="pt-3 text-center">
         <button class="btn btn-primary" type="submit">Buscar</button>
+    </div>
+    <div class="bg-loader" wire:loading>
+        <div class="card">
+            <div class="card-body p-5">
+                <div class="spinner-border text-secondary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
     </div>
 </form>

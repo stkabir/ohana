@@ -8,6 +8,9 @@ use App\Livewire\Forms\Publico\Forms\TrasporteForm;
 class FormControlHijo extends Component
 {
     public string $nombre;
+
+    public int $valueGet;
+    
     public TrasporteForm $form;
 
     public function mount(TrasporteForm $form)

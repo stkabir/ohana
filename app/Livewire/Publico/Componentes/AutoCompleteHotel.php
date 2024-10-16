@@ -16,6 +16,10 @@ class AutoCompleteHotel extends FormControlHijo
     public function render()
     {
         $this->lugares = Lugar::all();
+        if(!empty($this->valueGet) && $this->valueGet !== 0){
+            $lugarSeleccionado = Lugar::find($this->valueGet);
+            $this->seleccionar($lugarSeleccionado->id, $lugarSeleccionado->nombre);
+        }
         return view('livewire.publico.componentes.auto-complete-hotel');
     }
     public function blurControl() 

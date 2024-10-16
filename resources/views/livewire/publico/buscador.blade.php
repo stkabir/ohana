@@ -2,7 +2,7 @@
     <div class="row py-2">
         <div class="col-auto">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="idaVuelta" id="idaVuelta" value="1" wire:model.live="idaVuelta">
+                <input class="form-check-input" type="radio" name="idaVuelta" id="idaVuelta" value="1" wire:model.live="form.idaVuelta">
                 <label class="form-check-label" for="idaVuelta">
                   Ida y vuelta
                 </label>
@@ -10,7 +10,7 @@
         </div>
         <div class="col-auto">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="idaVuelta" id="soloIda" value="0" wire:model.live="idaVuelta">
+                <input class="form-check-input" type="radio" name="idaVuelta" id="soloIda" value="0" wire:model.live="form.idaVuelta">
                 <label class="form-check-label" for="soloIda">
                   Solo ida
                 </label>
@@ -33,7 +33,8 @@
                     @livewire(Publico\Componentes\SelectAeropuerto::class, [
                         "value" =>  "0",
                         "nombre"  =>  "origen",
-                        "form" => $form
+                        "form" => $form,
+                        "valueGet" =>$origenGet
                     ])
                     @error('form.origen') <small class="text-danger">{{ $message }}</small> @enderror
                     @break
@@ -41,7 +42,8 @@
                     @livewire(Publico\Componentes\AutocompleteHotel::class, [
                         "value" =>  "",
                         "nombre"  =>  "origen",
-                        "form" => $form
+                        "form" => $form,
+                        "valueGet" =>$origenGet
                     ])
                     @error('form.origen') <small class="text-danger">{{ $message }}</small> @enderror
                     @break
@@ -49,7 +51,8 @@
                     @livewire(Publico\Componentes\AutoCompleteHotel::class, [
                         "value" =>  "",
                         "nombre"  =>  "origen",
-                        "form" => $form
+                        "form" => $form,
+                        "valueGet" =>$origenGet
                     ])
                     @error('form.origen') <small class="text-danger">{{ $message }}</small> @enderror
                     @break
@@ -62,7 +65,8 @@
                     @livewire(Publico\Componentes\AutoCompleteHotel::class, [
                         "value" =>  "",
                         "nombre"  =>  "destino",
-                        "form" => $form
+                        "form" => $form,
+                        "valueGet" =>$destinoGet
                     ])
                     @error('form.destino') <small class="text-danger">{{ $message }}</small> @enderror
                     @break
@@ -70,7 +74,8 @@
                     @livewire(Publico\Componentes\SelectAeropuerto::class, [
                         "value" =>  "0",
                         "nombre"  =>  "destino",
-                        "form" => $form
+                        "form" => $form,
+                        "valueGet" =>$destinoGet
                     ])
                     @error('form.destino') <small class="text-danger">{{ $message }}</small> @enderror
                     @break
@@ -78,7 +83,8 @@
                     @livewire(Publico\Componentes\AutoCompleteHotel::class, [
                         "value" =>  "",
                         "nombre"  =>  "destino",
-                        "form" => $form
+                        "form" => $form,
+                        "valueGet" =>$destinoGet
                     ])
                     @error('form.destino') <small class="text-danger">{{ $message }}</small> @enderror
                     @break
@@ -91,7 +97,7 @@
             <input class="form-control" type="date" placeholder="Fecha ida" aria-label="Fecha de ida" wire:model="form.fechaIda">
             @error('form.fechaIda') <snall class="text-danger">{{ $message }}</snall> @enderror
         </div>
-        @if($idaVuelta)
+        @if($form->idaVuelta)
         <div class="col-6 col-sm-3 py-2">
             <input class="form-control" type="date" placeholder="Fecha vuelta" aria-label="Fecha de vuelta" wire:model="form.fechaVuelta">
             @error('form.fechaVuelta') <small class="text-danger">{{ $message }}</small> @enderror

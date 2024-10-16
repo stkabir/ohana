@@ -7,6 +7,10 @@ use Livewire\Form;
 
 class TrasporteForm extends Form
 {
+    
+    #[Validate('required|numeric')]
+    public int $idaVuelta = 1;
+
     #[Validate('required|numeric|min:1')]
     public int $tipoServicios = 1;
 
@@ -19,7 +23,7 @@ class TrasporteForm extends Form
     #[Validate('required|date|before_or_equal:"now"')]
     public string $fechaIda = "";
 
-    #[Validate('required|date|after_or_equal:fechaIda')]
+    #[Validate('required_if:idaVuelta,1|date|after_or_equal:fechaIda')]
     public string $fechaVuelta = "";
 
     #[Validate('required|numeric|min:1')]

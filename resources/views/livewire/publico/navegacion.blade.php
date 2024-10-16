@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar navbar-expand-lg fixed-top navegacion">
     <div class="container-xxl">
         <a class="navbar-brand" href="#">
             <img src="{{ asset('logo.png') }}" height="75px"/>

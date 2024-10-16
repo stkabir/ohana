@@ -15,7 +15,7 @@ class FormControlHijo extends Component
         $this->form = $form;
     }
 
-    public function actualizaValor()
+    public function emiteValor()
     {
         $this->dispatch('actualizaValor', campo: $this->nombre, valor: $this->form->{$this->nombre});
     }

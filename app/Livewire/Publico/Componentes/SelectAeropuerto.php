@@ -14,6 +14,6 @@ class SelectAeropuerto extends FormControlHijo
     }
 
     public function updated() {
-        $this->actualizaValor();
+        $this->emiteValor();
     }
 }

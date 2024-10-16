@@ -40,11 +40,5 @@ class TrasporteForm extends Form
             "ninos"=>"La cantidad no puede ser menor a 0"
         ]);
  
-    }
-
-    public function limpiaValidacion() 
-    {
-        $this->resetValidation();
-    }
-    
+    }    
 }

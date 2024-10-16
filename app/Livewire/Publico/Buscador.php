@@ -23,14 +23,9 @@ class Buscador extends Component
         return view('livewire.publico.buscador');
     }
 
-    public function updated() {
-        $this->form->origen = "";
-        $this->form->destino = "";
-        $this->form->limpiaValidacion();
-    }
-
     public function buscarTrasporte()
     {
         $this->form->store(); 
+        return redirect()->route("publico.buscar.traslados",$this->form->toArray());
     }
 }

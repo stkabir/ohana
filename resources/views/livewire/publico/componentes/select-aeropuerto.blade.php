@@ -1,5 +1,5 @@
-<select class="form-select" aria-label="selecciona aeropuerto {{$tipo}}" id="select_{{$tipo}}" wire:model="value">
-    <option value="0">- Selecciona {{$tipo}} -</option>
+<select class="form-select" aria-label="selecciona aeropuerto {{$nombre}}" id="select_{{$nombre}}" wire:model.change.live="form.{{$nombre}}">
+    <option value="0">- Selecciona {{$nombre}} -</option>
     @foreach ($zonas as $zona)
         <option wire:key="select_opt_{{$zona->id}}" value="{{$zona->id}}">
             {{$zona->nombre}}

@@ -6,19 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    //TODO Sin uso
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('traslados', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tarifa_id')->constrained();
-            $table->string('nombre', 100);
+            $table->string('nombre', 30);
+            $table->string('apellido', 30);
+            $table->string('telefono', 10);
             $table->string('email', 100);
-            $table->string('telefono', 20);
-            $table->boolean('estatus')->default(0);
+            $table->string('comentario', 200);
             $table->timestamps();
         });
     }
@@ -28,9 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('traslados', function (Blueprint $table) {
-            $table->dropForeign(['tarifa_id']);
-        });
-        Schema::dropIfExists('traslados');
+        Schema::dropIfExists('clientes');
     }
 };

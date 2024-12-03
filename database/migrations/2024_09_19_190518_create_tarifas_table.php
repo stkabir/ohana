@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('tarifas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('servicio_id')->constrained('servicios');
             $table->foreignId('origen_id')->constrained('lugares');
             $table->foreignId('destino_id')->constrained('lugares');
             $table->foreignId('unidad_id')->constrained('unidades');
-            $table->string('pax1', 3);
-            $table->string('pax2', 3);
-            $table->decimal('precio', 10, 2);
+            $table->string('pax1', 10);
+            $table->string('pax2', 10);
+            $table->decimal('precio1', 10, 2);
+            $table->decimal('precio2', 10, 2);
             $table->timestamps();
         });
     }
@@ -30,7 +30,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('tarifas', function (Blueprint $table) {
-            $table->dropForeign(['servicio_id']);
             $table->dropForeign(['origen_id']);
             $table->dropForeign(['destino_id']);
             $table->dropForeign(['unidad_id']);

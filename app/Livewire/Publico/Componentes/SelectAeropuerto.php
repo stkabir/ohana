@@ -3,14 +3,16 @@
 namespace App\Livewire\Publico\Componentes;
 
 use App\Livewire\Publico\Componentes\FormControlHijo;
-use App\Models\Zona;
+use App\Models\Lugar;
 
 class SelectAeropuerto extends FormControlHijo
 {
     public function render()
     {
-        $zonas = Zona::where("nombre", "like", "%APTO%")->get();
-        return view('livewire.publico.componentes.select-aeropuerto', ["zonas" => $zonas]);
+        $lugares = Lugar::whereHas("zona", function($query) {
+            $query->where('aeropuerto', '=' , true);
+        })->get();
+        return view('livewire.publico.componentes.select-aeropuerto', ['lugares'=> $lugares]);
     }
 
     public function updated() {

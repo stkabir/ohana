@@ -1,6 +1,6 @@
-FROM php:fpm
-RUN pecl install xdebug
-RUN docker-php-ext-enable xdebug
+FROM php:8.2-fpm
+#RUN pecl install xdebug
+#RUN docker-php-ext-enable xdebug
 
 ARG user
 ARG uid
@@ -14,7 +14,7 @@ libonig-dev \
 libxml2-dev
 RUN apt clean && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd pdo mysqli
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 

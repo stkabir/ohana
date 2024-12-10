@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('unidades', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 50);
-            $table->string('capacidad', 5);
+            $table->string('descripcion', 500)->nullable();
+            $table->string('capacidad', 2);
             $table->string('tipo', 30);
             $table->string('imagen')->nullable();
             $table->timestamps();

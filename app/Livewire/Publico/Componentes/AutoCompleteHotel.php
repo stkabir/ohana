@@ -2,28 +2,30 @@
 
 namespace App\Livewire\Publico\Componentes;
 
-use Livewire\Component;
+use App\Livewire\Publico\Componentes\FormControlHijo;
 use App\Models\Lugar;
 
-class AutoCompleteHotel extends Component
+class AutoCompleteHotel extends FormControlHijo
 {
-    public string $value;
-
-    public string $idValue;
-
-    public string $tipo; // origen || destino
+    public $value;
 
     public $lugares = [];
+
+    public $inputModificado = false;
     
     public bool $mostrarLugares = false;
 
     public function render()
     {
-        $this->lugares = Lugar::all();
+        if(!empty($this->valueGet) && $this->valueGet !== 0 && !$this->inputModificado ){
+            $lugarSeleccionado = Lugar::find($this->valueGet);
+            $this->seleccionar($lugarSeleccionado->id, $lugarSeleccionado->nombre);
+        }
         return view('livewire.publico.componentes.auto-complete-hotel');
     }
     public function blurControl() 
     {
+        $this->inputModificado = true;
         if(count($this->lugares)>0) {
             $this->mostrarLugares = true;
         } else {
@@ -33,10 +35,17 @@ class AutoCompleteHotel extends Component
 
     public function buscarLugares()
     {
-        if($this->value != '') {
-            $this->lugares = Lugar::where('nombre','like', '%'.$this->value.'%')->get();
+        if(!empty($this->value)) {
+            $this->lugares = Lugar::where('nombre','like', '%'.$this->value.'%')
+            ->whereHas("zona", function($query) {
+                $query->where('aeropuerto',false);
+            })
+            ->get();
         } else {
-            $this->lugares = [];
+            $this->lugares = Lugar::whereHas("zona", function($query) {
+                $query->where('aeropuerto', '=' ,false);
+            })
+            ->get();
         }
         $this->blurControl();
     }
@@ -44,7 +53,9 @@ class AutoCompleteHotel extends Component
     public function seleccionar(string $id, string $nombre) 
     {
         $this->value=$nombre;
-        $this->idValue=$id;
+        $modelName = strtolower($this->nombre);
+        $this->form->{$modelName}=$id;
         $this->mostrarLugares = false;
+        $this->emiteValor();
     }
 }

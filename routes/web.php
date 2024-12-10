@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'publico.home');
+Route::prefix("/")->group(function() {
+    Route::view('/', 'publico.home')->name("publico.home");
+    Route::view('/buscar-traslados', 'publico.busqueda.traslados')->name("publico.buscar.traslados");
+    Route::view('/reservacion', 'publico.reservaciones.traslados')->name('publico.reservar.traslados');
+});
 
 Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function () {
     Route::view('/inicio', 'dashboard.index', ['component' => 'dashboard.home'])->name('home');

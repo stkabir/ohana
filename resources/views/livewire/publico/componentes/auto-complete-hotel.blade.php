@@ -1,5 +1,5 @@
 <div class="autocomplete">
-    <input type="text" class="form-control" id="autocomplete_{{$nombre}}"  wire:click="blurControl"
+    <input type="text" class="form-control" id="autocomplete_{{$nombre}}"  wire:click="buscarLugares"
     placeholder="Selecciona {{$nombre}}" wire:model="value" wire:keydown="buscarLugares">
     @if($mostrarLugares)
         <div class="autocomplete-list" id="autocomplete_{{$nombre}}_list">

@@ -115,7 +115,7 @@
         <div class="col-6 col-sm-3 py-2">
             <select class="form-select" aria-label="Menores" wire:model="form.ninos">
                 <option selected>- Menores -</option>
-                @for($i=1; $i<=50; $i++) 
+                @for($i=0; $i<=50; $i++) 
                     <option value="{{$i}}" wire:key="{{$i}}">{{$i}}</option>
                 @endFor
             </select>

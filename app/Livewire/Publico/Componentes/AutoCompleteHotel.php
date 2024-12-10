@@ -10,13 +10,14 @@ class AutoCompleteHotel extends FormControlHijo
     public $value;
 
     public $lugares = [];
+
+    public $inputModificado = false;
     
     public bool $mostrarLugares = false;
 
     public function render()
     {
-        $this->lugares = Lugar::all();
-        if(!empty($this->valueGet) && $this->valueGet !== 0){
+        if(!empty($this->valueGet) && $this->valueGet !== 0 && !$this->inputModificado ){
             $lugarSeleccionado = Lugar::find($this->valueGet);
             $this->seleccionar($lugarSeleccionado->id, $lugarSeleccionado->nombre);
         }
@@ -24,6 +25,7 @@ class AutoCompleteHotel extends FormControlHijo
     }
     public function blurControl() 
     {
+        $this->inputModificado = true;
         if(count($this->lugares)>0) {
             $this->mostrarLugares = true;
         } else {
@@ -33,10 +35,17 @@ class AutoCompleteHotel extends FormControlHijo
 
     public function buscarLugares()
     {
-        if($this->value != '') {
-            $this->lugares = Lugar::where('nombre','like', '%'.$this->value.'%')->get();
+        if(!empty($this->value)) {
+            $this->lugares = Lugar::where('nombre','like', '%'.$this->value.'%')
+            ->whereHas("zona", function($query) {
+                $query->where('aeropuerto',false);
+            })
+            ->get();
         } else {
-            $this->lugares = [];
+            $this->lugares = Lugar::whereHas("zona", function($query) {
+                $query->where('aeropuerto', '=' ,false);
+            })
+            ->get();
         }
         $this->blurControl();
     }

@@ -20,7 +20,7 @@ class TrasporteForm extends Form
     #[Validate('required|numeric|min:1')]
     public string $destino = "";
 
-    #[Validate('required|date|before_or_equal:"now"')]
+    #[Validate('required|date|after_or_equal:today')]
     public string $fechaIda = "";
 
     #[Validate('required_if:idaVuelta,1|date|after_or_equal:fechaIda')]

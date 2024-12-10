@@ -67,3 +67,6 @@ footer h2 {
     text-align: center;
     color: rgb(37, 46, 80);
 }
+.small-text {
+    font-size: 12px;
+}

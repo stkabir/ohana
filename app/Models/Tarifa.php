@@ -22,13 +22,13 @@ class Tarifa extends Model
      * @var array
      */
     protected $fillable = [
-        'servicio_id',
         'origen_id',
         'destino_id',
         'unidad_id',
         'pax1',
         'pax2',
-        'precio',
+        'precio1',
+        'precio2'
     ];
 
     /**

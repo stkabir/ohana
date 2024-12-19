@@ -16,6 +16,7 @@ class ReservarTraslado extends Component
     }
 
     public function mount(Request $request) {
+        $this->form->id = $request->get("id");
         $this->form->tipoServicio = $request->get("tipoServicio");
         $this->form->numeroPersonas = $request->get("personas");
         $this->form->idaVuelta = $request->get("idaVuelta");
@@ -25,7 +26,5 @@ class ReservarTraslado extends Component
 
     public function procederPago() {
         $this->form->store();
-        dd($this->form);
-        return '';
     }
 }

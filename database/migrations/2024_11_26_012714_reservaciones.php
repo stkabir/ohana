@@ -37,8 +37,11 @@ return new class extends Migration
         
         Schema::create('reservaciones_detalles_traslados', function(Blueprint $table) {
             $table->id();
+            $table->foreignId('reservaciones_detalles_id')->constrained(indexName:'reservacioines_detalles_traslados');
             $table->foreignId('lugar_inicio_id')->constrained('lugares');
             $table->foreignId('lugar_fin_id')->constrained('lugares');
+            $table->string('fecha', 40);
+            $table->string('hora',20);
             $table->string('aerolinea', 40);
             $table->string('numero_vuelo', 10);
             $table->timestamps();

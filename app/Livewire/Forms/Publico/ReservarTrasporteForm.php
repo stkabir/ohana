@@ -4,12 +4,13 @@ namespace App\Livewire\Forms\Publico;
 
 use Livewire\Attributes\Validate;
 use Livewire\Form;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-use Illuminate\Validation\ValidationException;
+use App\Models\Reservaciones;
 
 class ReservarTrasporteForm extends Form
 {
+    public string $id;
+
     #[Validate ('required|max:30')]
     public string $nombre = '';
 
@@ -93,8 +94,28 @@ class ReservarTrasporteForm extends Form
             ],
             $this->pasajerosError($this->numeroPersonas)
         );
+
         $this->validate(rules: $rules, attributes: $attibutes, messages: $messages);
 
+        Reservaciones::creaReservacionTrasporte(
+            ($this->idaVuelta == '1'),
+            $this->id,
+            $this->nombre, 
+            $this->apellido,
+            $this->telefono,
+            $this->email,
+            $this->comentario,
+            $this->numeroPersonas,
+            $this->personas,
+            $this->fechaLlegada,
+            $this->hora1,
+            $this->aerolinea1,
+            $this->numeroVuelo1,
+            $this->fechaSalida,
+            $this->hora2,
+            $this->aerolinea2,
+            $this->numeroVuelo2
+        );
     }
 
     public function validacionLlegada(): bool {

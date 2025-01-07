@@ -30,4 +30,12 @@ class ReservacionesDetallesTraslados extends Model
             'numero_vuelo' => $numeroVuelo,
         ]);
     }
+
+    public function origen() {
+        return $this->hasOne(Lugar::class, 'id', 'lugar_inicio_id');
+    }
+
+    public function destino() {
+        return $this->hasOne(Lugar::class, 'id', 'lugar_fin_id');
+    }
 }

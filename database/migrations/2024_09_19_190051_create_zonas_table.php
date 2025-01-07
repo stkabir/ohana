@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('zonas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 50);
-            $table->string('clave', 10)->unique();
+            $table->string('clave', 10)->unique()->nullable();
             $table->boolean('aeropuerto')->default(false);
             $table->timestamps();
         });

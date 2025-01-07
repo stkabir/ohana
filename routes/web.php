@@ -26,6 +26,7 @@ Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(func
     Route::view('/servicios', 'dashboard.index', ['component' => 'dashboard.servicio'])->name('servicio');
     Route::view('/unidades', 'dashboard.index', ['component' => 'dashboard.unidad'])->name('unidad');
     Route::view('/tarifas', 'dashboard.index', ['component' => 'dashboard.tarifa'])->name('tarifa');
+    Route::view('/reservas', 'dashboard.index', ['component' => 'dashboard.reserva'])->name('reserva');
 });
 
 Route::view('/login', 'site.index', ['component' => 'site.login'])->name('login');

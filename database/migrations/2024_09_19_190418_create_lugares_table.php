@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('lugares', function (Blueprint $table) {
             $table->id();
-            $table->string('clave', 10)->unique();
             $table->string('nombre', 70);
+            $table->string('clave', 10)->unique()->nullable();
             $table->foreignId('zona_id')->constrained();
             $table->timestamps();
         });

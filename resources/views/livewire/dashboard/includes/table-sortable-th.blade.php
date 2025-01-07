@@ -1,4 +1,4 @@
-<th wire:click="setSortBy('{{ $name }}')">
+<th style="width: 250px;" wire:click="setSortBy('{{ $name }}')">
     <button class="btn btn-sm fw-bold">
         {{ $label }}
         @if ($sortBy !== $name)

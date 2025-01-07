@@ -41,6 +41,12 @@
                 Tarifas
             </a>
         </li>
+        <li class="sidebar-item">
+            <a wire:navigate href="{{ route('dashboard.reserva') }}" class="sidebar-link {{ Route::is('dashboard.reserva') ? 'active' : '' }}">
+                <i class="bi bi-book"></i>
+                Reservas
+            </a>
+        </li>
         <!-- <li class="sidebar-item">
             <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
                 data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
